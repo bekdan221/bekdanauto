@@ -8,7 +8,7 @@
         .box { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(15px); padding: 40px; border-radius: 30px; width: 90%; max-width: 450px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.1); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5); }
         h1 { font-size: 28px; margin-bottom: 20px; background: linear-gradient(to right, #4facfe, #00f2fe); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         button { background: rgba(255, 255, 255, 0.1); color: white; border: 1px solid rgba(255, 255, 255, 0.2); padding: 12px; border-radius: 15px; cursor: pointer; width: 100%; margin: 8px 0; font-size: 15px; transition: 0.3s; }
-        button:hover { background: rgba(255, 255, 255, 0.2); border-color: #00f2fe; transform: translateY(-2px); }
+        button:hover { background: rgba(255, 255, 255, 0.2); border-color: #00f2fe; }
         .progress-bar { background: #333; height: 6px; border-radius: 3px; margin: 20px 0; }
         #progress { background: linear-gradient(to right, #4facfe, #00f2fe); height: 100%; width: 0%; border-radius: 3px; transition: 0.5s; }
     </style>
@@ -18,69 +18,80 @@
 <div class="box" id="app">
     <h1>QUEST ARENA</h1>
     <p>Выберите испытание:</p>
-    <button onclick="startQuiz('IT')">💻 IT Hardcore</button>
-    <button onclick="startQuiz('Games')">🎮 Игры (All Games)</button>
-    <button onclick="startQuiz('IQ')">🧠 IQ Master</button>
+    <button onclick="Game.start('IT')">💻 IT Hardcore</button>
+    <button onclick="Game.start('Games')">🎮 Игры (All Games)</button>
+    <button onclick="Game.start('IQ')">🧠 IQ Master</button>
 </div>
 
 <script>
-    const data = {
-        'IT': [
-            { q: "Что такое Python?", a: ["Язык программирования", "Змея", "Еда", "Одежда"], correct: 0 },
-            { q: "Где хранят код?", a: ["GitHub", "В сейфе", "На бумаге", "В шкафу"], correct: 0 },
-            { q: "HTML это...?", a: ["Язык разметки", "Игра", "Браузер", "Антивирус"], correct: 0 },
-            { q: "Что такое баг?", a: ["Ошибка", "Насекомое", "Функция", "Кнопка"], correct: 0 },
-            { q: "CSS отвечает за...?", a: ["Стили", "Код", "Браузер", "Фото"], correct: 0 }
-        ],
-        'Games': [
-            { q: "Как зовут главного героя GTA San Andreas?", a: ["Си-Джей", "Томми", "Нико", "Клод"], correct: 0 },
-            { q: "В какой игре есть Робуксы?", a: ["Roblox", "Minecraft", "Fortnite", "GTA"], correct: 0 },
-            { q: "Кто создал Minecraft?", a: ["Notch", "Elon Musk", "Bill Gates", "David"], correct: 0 },
-            { q: "Какая игра про выживание в космосе?", a: ["Among Us", "Dota 2", "FIFA", "CS:GO"], correct: 0 },
-            { q: "Что нужно собирать в Minecraft?", a: ["Ресурсы", "Очки", "Монеты", "Звезды"], correct: 0 },
-            { q: "Как называется валюта в CS:GO?", a: ["Доллары", "Монеты", "Робуксы", "Кредиты"], correct: 0 },
-            { q: "Игра про двух братьев-сантехников?", a: ["Mario", "Sonic", "GTA", "PUBG"], correct: 0 },
-            { q: "Жанр 'PUBG'?", a: ["Королевская битва", "Гонки", "Симулятор", "Стратегия"], correct: 0 },
-            { q: "Как зовут Стива в Minecraft?", a: ["Это скин", "Босс", "Админ", "Игрок"], correct: 0 },
-            { q: "Игра от Rockstar Games?", a: ["GTA", "Roblox", "Mario", "Minecraft"], correct: 0 },
-            { q: "Что такое 'Skin' в играх?", a: ["Вид персонажа", "Уровень", "Оружие", "Карта"], correct: 0 },
-            { q: "Популярный командный шутер от Valve?", a: ["CS:GO", "FIFA", "Dota", "GTA"], correct: 0 },
-            { q: "Как называется 'уровень' в игре?", a: ["Лэвел", "Скин", "Баг", "Чит"], correct: 0 },
-            { q: "В какой игре есть 'Криперы'?", a: ["Minecraft", "Roblox", "GTA", "Mario"], correct: 0 },
-            { q: "Что делает 'Чит'?", a: ["Взлом игры", "Помогает", "Учит", "Удаляет"], correct: 0 }
-        ],
-        'IQ': [
-            { q: "2 + 2 * 2 = ?", a: ["6", "8", "4", "12"], correct: 0 },
-            { q: "Столица Кыргызстана?", a: ["Бишкек", "Ош", "Нарын", "Талас"], correct: 0 },
-            { q: "Лишнее: Яблоко, Груша, Морковь", a: ["Морковь", "Яблоко", "Груша"], correct: 0 },
-            { q: "1 кг железа против 1 кг ваты?", a: ["Равны", "Железо", "Вата"], correct: 0 },
-            { q: "Кто первым был в космосе?", a: ["Гагарин", "Маск", "Армстронг"], correct: 0 }
-        ]
+    const Game = {
+        data: {
+            'IT': [
+                { q: "Что такое Python?", a: ["Язык программирования", "Змея", "Еда", "Одежда"], correct: 0 },
+                { q: "Где хранят код?", a: ["GitHub", "В сейфе", "На бумаге", "В шкафу"], correct: 0 },
+                { q: "HTML это...?", a: ["Язык разметки", "Игра", "Браузер", "Антивирус"], correct: 0 },
+                { q: "Что такое баг?", a: ["Ошибка", "Насекомое", "Функция", "Кнопка"], correct: 0 },
+                { q: "CSS отвечает за...?", a: ["Стили", "Код", "Браузер", "Фото"], correct: 0 }
+            ],
+            'Games': [
+                { q: "Как зовут героя GTA San Andreas?", a: ["Си-Джей", "Томми", "Нико", "Клод"], correct: 0 },
+                { q: "В какой игре есть Робуксы?", a: ["Roblox", "Minecraft", "Fortnite", "GTA"], correct: 0 },
+                { q: "Кто создал Minecraft?", a: ["Notch", "Elon Musk", "Bill Gates", "David"], correct: 0 },
+                { q: "Что нужно собирать в Minecraft?", a: ["Ресурсы", "Очки", "Монеты", "Звезды"], correct: 0 },
+                { q: "Как зовут Стива в Minecraft?", a: ["Игрок", "Босс", "Админ", "Скин"], correct: 0 },
+                { q: "Игра от Rockstar Games?", a: ["GTA", "Roblox", "Mario", "Minecraft"], correct: 0 },
+                { q: "Популярный шутер от Valve?", a: ["CS:GO", "FIFA", "Dota", "GTA"], correct: 0 },
+                { q: "В какой игре есть 'Криперы'?", a: ["Minecraft", "Roblox", "GTA", "Mario"], correct: 0 },
+                { q: "Что такое 'Skin' в играх?", a: ["Вид персонажа", "Уровень", "Оружие", "Карта"], correct: 0 },
+                { q: "Как называется 'уровень' в игре?", a: ["Лэвел", "Скин", "Баг", "Чит"], correct: 0 },
+                { q: "Игра про двух братьев-сантехников?", a: ["Mario", "Sonic", "GTA", "PUBG"], correct: 0 },
+                { q: "Жанр 'PUBG'?", a: ["Королевская битва", "Гонки", "Симулятор", "Стратегия"], correct: 0 },
+                { q: "Что делает 'Чит'?", a: ["Взлом игры", "Помогает", "Учит", "Удаляет"], correct: 0 },
+                { q: "Какая игра про космос?", a: ["Among Us", "Dota", "FIFA", "CS:GO"], correct: 0 },
+                { q: "Валюта в CS:GO?", a: ["Монеты", "Доллары", "Робуксы", "Кредиты"], correct: 0 }
+            ],
+            'IQ': [
+                { q: "2 + 2 * 2 = ?", a: ["6", "8", "4", "12"], correct: 0 },
+                { q: "Столица Кыргызстана?", a: ["Бишкек", "Ош", "Нарын", "Талас"], correct: 0 },
+                { q: "Лишнее: Яблоко, Груша, Морковь", a: ["Морковь", "Яблоко", "Груша"], correct: 0 },
+                { q: "1 кг железа против 1 кг ваты?", a: ["Равны", "Железо", "Вата"], correct: 0 },
+                { q: "Кто первым был в космосе?", a: ["Гагарин", "Маск", "Армстронг"], correct: 0 }
+            ]
+        },
+        currentCat: null,
+        qIdx: 0,
+        
+        start(cat) {
+            this.currentCat = cat;
+            this.qIdx = 0;
+            this.render();
+        },
+        
+        check(idx) {
+            if (idx === this.data[this.currentCat][this.qIdx].correct) {
+                this.qIdx++;
+                if (this.qIdx < this.data[this.currentCat].length) {
+                    this.render();
+                } else {
+                    document.getElementById('app').innerHTML = `<h2>ПОБЕДА!</h2><button onclick="location.reload()">В МЕНЮ</button>`;
+                }
+            } else {
+                alert('Неверно! Попробуй еще.');
+            }
+        },
+        
+        render() {
+            const q = this.data[this.currentCat][this.qIdx];
+            const progress = (this.qIdx / this.data[this.currentCat].length) * 100;
+            document.getElementById('app').innerHTML = `
+                <h2>${this.currentCat}</h2>
+                <div class="progress-bar"><div id="progress" style="width: ${progress}%"></div></div>
+                <p>${this.qIdx + 1} / ${this.data[this.currentCat].length}</p>
+                <p>${q.q}</p>
+                ${q.a.map((text, i) => `<button onclick="Game.check(${i})">${text}</button>`).join('')}
+            `;
+        }
     };
-
-    let currentCat = "", qIdx = 0;
-
-    function startQuiz(cat) { currentCat = cat; qIdx = 0; showQuestion(); }
-    
-    function showQuestion() {
-        const q = data[currentCat][qIdx];
-        const progress = ((qIdx) / data[currentCat].length) * 100;
-        document.getElementById('app').innerHTML = `
-            <h2>${currentCat}</h2>
-            <div class="progress-bar"><div id="progress" style="width: ${progress}%"></div></div>
-            <p>${qIdx + 1} / ${data[currentCat].length}</p>
-            <p style="font-size: 18px; margin: 20px 0;">${q.q}</p>
-            ${q.a.map((text, i) => <button onclick="check(${i})">${text}</button>).join('')}
-        `;
-    }
-
-    function check(idx) {
-        if (idx === data[currentCat][qIdx].correct) {
-            qIdx++;
-            if (qIdx < data[currentCat].length) showQuestion();
-            else document.getElementById('app').innerHTML = <h2>ПОБЕДА!</h2><button onclick="location.reload()">В МЕНЮ</button>;
-        } else { alert('Неверно! Попробуй еще.'); }
-    }
 </script>
 </body>
 </html>
