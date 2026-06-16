@@ -5,33 +5,38 @@ function setCategory(cat) {
     currentCategory = cat;
     currentQIndex = 0;
     loadQuestion();
+    console.log("Категория выбрана:", cat);
 }
 
 function loadQuestion() {
-    const q = quizData[currentCategory][currentQIndex];
+    const quizBox = document.getElementById('quiz-box');
+    const qData = quizData[currentCategory];
+    
+    if(!qData || currentQIndex >= qData.length) {
+        document.getElementById('question').innerText = "Тест завершен!";
+        document.getElementById('answers').innerHTML = "";
+        return;
+    }
+
+    const q = qData[currentQIndex];
     document.getElementById('question').innerText = q.q;
     const container = document.getElementById('answers');
     container.innerHTML = '';
 
-    // Перемешивание
-    let answers = q.a.map((text, idx) => ({text, originalIndex: idx}));
-    answers.sort(() => Math.random() - 0.5);
-
-    answers.forEach(ans => {
+    q.a.forEach((text, idx) => {
         const btn = document.createElement('div');
         btn.className = 'btn';
-        btn.innerText = ans.text;
+        btn.innerText = text;
         btn.onclick = () => {
-            if(ans.originalIndex === q.correct) {
-                changeColor(0x00ff00); // Куб зеленый
+            if(idx === q.correct) {
+                changeColor(0x00ff00);
                 alert("Верно!");
             } else {
-                changeColor(0xff0000); // Куб красный
+                changeColor(0xff0000);
                 alert("Ошибка!");
             }
             currentQIndex++;
-            if(currentQIndex < quizData[currentCategory].length) loadQuestion();
-            else alert("Категория завершена!");
+            loadQuestion();
         };
         container.appendChild(btn);
     });
