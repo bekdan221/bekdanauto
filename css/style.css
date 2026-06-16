@@ -1,1 +1,14 @@
- 
+body { margin: 0; background: #111; color: white; font-family: sans-serif; }
+#quiz-box { 
+    position: absolute; top: 20px; left: 20px; 
+    background: rgba(20, 20, 20, 0.9); 
+    padding: 25px; border-radius: 15px; 
+    border: 1px solid #444; width: 300px;
+}
+.btn { 
+    background: #222; border: 1px solid #555; 
+    padding: 12px; margin-top: 10px; cursor: pointer; 
+    transition: 0.3s; border-radius: 8px; 
+}
+.btn:hover { background: #444; border-color: #0af; }
+#menu { position: absolute; top: 20px; right: 20px; }
