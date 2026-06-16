@@ -2,76 +2,75 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>IT Quest Arena</title>
+    <title>QUEST ARENA</title>
     <style>
-        body { background: #0a0a0a; color: #fff; font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .box { background: #161616; padding: 30px; border-radius: 25px; width: 90%; max-width: 500px; text-align: center; border: 1px solid #333; }
-        h1 { color: #ff3333; margin-bottom: 20px; }
-        .progress-bar { background: #333; height: 10px; border-radius: 5px; margin: 20px 0; overflow: hidden; }
-        #progress { background: #ff3333; height: 100%; width: 0%; transition: 0.4s; }
-        button { background: #222; color: #fff; border: 2px solid #333; padding: 12px; border-radius: 12px; cursor: pointer; width: 100%; margin: 8px 0; font-size: 16px; transition: 0.3s; }
-        button:hover { background: #ff3333; border-color: #ff3333; transform: scale(1.02); }
+        body { 
+            margin: 0; 
+            height: 100vh; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            background: radial-gradient(circle, #1a1a2e, #16213e, #0f3460); 
+            font-family: 'Segoe UI', sans-serif; 
+            color: white; 
+        }
+        .box { 
+            background: rgba(255, 255, 255, 0.05); 
+            backdrop-filter: blur(15px); 
+            padding: 40px; 
+            border-radius: 30px; 
+            width: 90%; 
+            max-width: 450px; 
+            text-align: center; 
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+        h1 { font-size: 28px; margin-bottom: 20px; background: linear-gradient(to right, #4facfe, #00f2fe); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        button { 
+            background: rgba(255, 255, 255, 0.1); 
+            color: white; 
+            border: 1px solid rgba(255, 255, 255, 0.2); 
+            padding: 16px; 
+            border-radius: 15px; 
+            cursor: pointer; 
+            width: 100%; 
+            margin: 10px 0; 
+            font-size: 16px; 
+            transition: 0.3s; 
+        }
+        button:hover { background: rgba(255, 255, 255, 0.2); border-color: #00f2fe; transform: translateY(-3px); }
+        .progress-bar { background: #333; height: 6px; border-radius: 3px; margin: 20px 0; }
+        #progress { background: linear-gradient(to right, #4facfe, #00f2fe); height: 100%; width: 0%; border-radius: 3px; transition: 0.5s; }
     </style>
 </head>
 <body>
 
 <div class="box" id="app">
-    <h1>IT QUEST ARENA</h1>
+    <h1>QUEST ARENA</h1>
     <p>Выберите испытание:</p>
-    <button onclick="startQuiz('IT')">💻 IT Тест</button>
-    <button onclick="startQuiz('IQ')">🧠 IQ Тест</button>
-    <button onclick="startQuiz('Riddle')">🔮 Загадки</button>
+    <button onclick="startQuiz('IT')">💻 IT Hardcore</button>
+    <button onclick="startQuiz('Games')">🎮 Roblox & Games</button>
+    <button onclick="startQuiz('IQ')">🧠 IQ Master</button>
 </div>
 
 <script>
+    // ... (оставь тот же массив data, что и в прошлом коде)
     const data = {
-        IT: [
-            { q: "Что такое Python?", a: ["Змея", "Язык программирования", "Еда", "Одежда", "Город"], correct: 1 },
-            { q: "Что значит HTML?", a: ["Стиль", "Разметка", "Браузер", "Сервер", "Шифр"], correct: 1 },
-            { q: "Где хранят код?", a: ["GitHub", "В сейфе", "На бумаге", "В шкафу", "Под кроватью"], correct: 0 },
-            { q: "Что такое Django?", a: ["Фреймворк", "Игра", "Вирус", "Клавиатура", "Мышь"], correct: 0 },
-            { q: "Что такое баг?", a: ["Ошибка", "Насекомое", "Функция", "Кнопка", "Стиль"], correct: 0 },
-            { q: "Как вывести текст?", a: ["print()", "show()", "get()", "put()", "run()"], correct: 0 },
-            { q: "Что такое CSS?", a: ["Стили", "Код", "Браузер", "Фото", "Видео"], correct: 0 }
-        ],
-        IQ: [
-            { q: "2 + 2 * 2 = ?", a: ["8", "6", "4", "10", "12"], correct: 1 },
-            { q: "Столица Кыргызстана?", a: ["Ош", "Бишкек", "Нарын", "Талас", "Чуй"], correct: 1 },
-            { q: "Лишнее: Яблоко, Груша, Морковь", a: ["Морковь", "Яблоко", "Груша", "Банан", "Слива"], correct: 0 },
-            { q: "Что тяжелее: 1кг железа или 1кг ваты?", a: ["Одинаково", "Железо", "Вата", "Железо больше", "Вата больше"], correct: 0 },
-            { q: "Сколько дней в году?", a: ["365", "300", "400", "360", "366"], correct: 0 },
-            { q: "Пять дочерей отца Мэри?", a: ["Мэри", "Аня", "Лена", "Ира", "Оля"], correct: 0 },
-            { q: "Кто был первым в космосе?", a: ["Гагарин", "Армстронг", "Маск", "Королев", "Ньютон"], correct: 0 }
-        ],
-        Riddle: [
-            { q: "Висит груша — нельзя скушать?", a: ["Лампочка", "Груша", "Луна", "Солнце", "Звезда"], correct: 0 },
-            { q: "Что можно видеть с закрытыми глазами?", a: ["Сон", "Темноту", "Свет", "Цвета", "Ничего"], correct: 0 },
-            { q: "У кого есть шапка, но нет головы?", a: ["Гриб", "Гора", "Стул", "Стол", "Дерево"], correct: 0 },
-            { q: "Что идет, не двигаясь с места?", a: ["Время", "Дождь", "Снег", "Ветер", "Дорога"], correct: 0 },
-            { q: "Что принадлежит тебе, но пользуются другие?", a: ["Имя", "Телефон", "Машина", "Дом", "Ключи"], correct: 0 },
-            { q: "Какой месяц короче всех?", a: ["Май", "Июнь", "Июль", "Март", "Апрель"], correct: 0 },
-            { q: "Чем больше из него берешь, тем больше он становится?", a: ["Яма", "Кошелек", "Сумка", "Рюкзак", "Карман"], correct: 0 }
-        ]
+        IT: [ /* твои вопросы */ ],
+        Games: [ /* твои вопросы */ ],
+        IQ: [ /* твои вопросы */ ]
     };
 
-    let currentCat = "";
-    let qIdx = 0;
-
-    function startQuiz(cat) {
-        currentCat = cat;
-        qIdx = 0;
-        showQuestion();
-    }
-
+    let currentCat = "", qIdx = 0;
+    function startQuiz(cat) { currentCat = cat; qIdx = 0; showQuestion(); }
+    
     function showQuestion() {
         const q = data[currentCat][qIdx];
-        const progressPercent = ((qIdx) / data[currentCat].length) * 100;
-        
         document.getElementById('app').innerHTML = `
             <h2>${currentCat}</h2>
-            <div class="progress-bar"><div id="progress" style="width: ${progressPercent}%"></div></div>
+            <div class="progress-bar"><div id="progress" style="width: ${(qIdx / data[currentCat].length) * 100}%"></div></div>
             <p>${qIdx + 1} / ${data[currentCat].length}</p>
-            <p>${q.q}</p>
+            <p style="font-size: 18px; margin: 20px 0;">${q.q}</p>
             ${q.a.map((text, i) => `<button onclick="check(${i})">${text}</button>`).join('')}
         `;
     }
@@ -79,16 +78,10 @@
     function check(idx) {
         if (idx === data[currentCat][qIdx].correct) {
             qIdx++;
-            if (qIdx < data[currentCat].length) {
-                showQuestion();
-            } else {
-                document.getElementById('app').innerHTML = `<h2>Победа!</h2><button onclick="location.reload()">В меню</button>`;
-            }
-        } else {
-            alert('Неверно! Попробуй еще раз.');
+            if (qIdx < data[currentCat].length) showQuestion();
+            else document.getElementById('app').innerHTML = `<h2>ПОБЕДА!</h2><button onclick="location.reload()">В МЕНЮ</button>`;
         }
     }
 </script>
-
 </body>
 </html>
