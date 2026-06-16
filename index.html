@@ -2,54 +2,40 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Мега-Тест: IT и IQ</title>
+    <title>IT Quest Arena</title>
     <style>
-        body { background: #121212; color: #fff; font-family: sans-serif; display: flex; justify-content: center; padding: 20px; }
-        .box { background: #1e1e1e; padding: 30px; border-radius: 20px; width: 100%; max-width: 600px; box-shadow: 0 0 15px rgba(0,0,0,0.5); text-align: center; }
-        button { background: #ff3333; color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer; width: 100%; margin: 8px 0; font-size: 16px; transition: 0.3s; }
-        button:hover { background: #cc0000; }
-        .cat { color: #888; text-transform: uppercase; font-size: 12px; margin-bottom: 10px; }
+        body { background: #0a0a0a; color: #fff; font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        .box { background: #161616; padding: 40px; border-radius: 25px; width: 90%; max-width: 500px; text-align: center; border: 1px solid #333; }
+        h1 { color: #ff3333; margin-bottom: 30px; }
+        button { background: #222; color: #fff; border: 2px solid #333; padding: 15px; border-radius: 12px; cursor: pointer; width: 100%; margin: 10px 0; font-size: 18px; transition: 0.4s; }
+        button:hover { background: #ff3333; border-color: #ff3333; transform: scale(1.05); }
     </style>
 </head>
 <body>
 
-<div class="box">
-    <div id="category" class="cat">Категория</div>
-    <h2 id="question">Вопрос</h2>
-    <div id="options"></div>
+<div class="box" id="app">
+    <h1>IT QUEST ARENA</h1>
+    <p>Выберите испытание:</p>
+    <button onclick="startQuiz('IT')">💻 IT Тест</button>
+    <button onclick="startQuiz('IQ')">🧠 IQ Тест</button>
+    <button onclick="startQuiz('Riddle')">🔮 Загадки</button>
 </div>
 
 <script>
-    const quiz = [
-        // IQ Тесты
-        { cat: "IQ Тест", q: "Сколько будет 2 + 2 * 2?", a: ["6", "8", "4", "10"], correct: 0 },
-        { cat: "IQ Тест", q: "Найди лишнее: Яблоко, Груша, Морковь, Банан", a: ["Морковь", "Яблоко", "Груша", "Банан", "Киви"], correct: 0 },
-        { cat: "IQ Тест", q: "У отца Мэри есть 5 дочерей: Чача, Чече, Чичи, Чочо. Как зовут пятую?", a: ["Чучу", "Мэри", "Аня", "Лена"], correct: 1 },
-        
-        // IT Тесты
-        { cat: "IT Тест", q: "Что такое HTML?", a: ["Язык программирования", "Язык разметки", "Браузер", "Антивирус"], correct: 1 },
-        { cat: "IT Тест", q: "Какой язык используется для создания Telegram-ботов?", a: ["Python", "HTML", "CSS", "Photoshop", "Excel"], correct: 0 },
-        { cat: "IT Тест", q: "Где хранят код программисты?", a: ["В сейфе", "GitHub", "На флешке", "В голове", "В облаке"], correct: 1 }
-    ];
+    const data = {
+        IT: [ { q: "Что такое Python?", a: ["Змея", "Язык программирования", "Еда"], correct: 1 } ],
+        IQ: [ { q: "Сколько будет 2+2*2?", a: ["8", "6", "4"], correct: 1 } ],
+        Riddle: [ { q: "Висит груша — нельзя скушать?", a: ["Лампочка", "Груша", "Луна"], correct: 0 } ]
+    };
 
-    let current = 0;
-    function load() {
-        if(current >= quiz.length) {
-            document.querySelector('.box').innerHTML = "<h2>Тест пройден! Ты справился!</h2><button onclick='location.reload()'>Начать заново</button>";
-            return;
-        }
-        document.getElementById('category').innerText = quiz[current].cat;
-        document.getElementById('question').innerText = quiz[current].q;
-        const opt = document.getElementById('options');
-        opt.innerHTML = "";
-        quiz[current].a.forEach((text, i) => {
-            const btn = document.createElement('button');
-            btn.innerText = text;
-            btn.onclick = () => { current++; load(); };
-            opt.appendChild(btn);
-        });
+    function startQuiz(cat) {
+        const q = data[cat][0];
+        document.getElementById('app').innerHTML = `
+            <h2>${cat} Испытание</h2>
+            <p>${q.q}</p>
+            ${q.a.map((text, i) => `<button onclick="alert('${i === q.correct ? 'Верно!' : 'Ошибка!'}'); location.reload()">${text}</button>`).join('')}
+        `;
     }
-    load();
 </script>
 
 </body>
