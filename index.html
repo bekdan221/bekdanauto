@@ -2,16 +2,27 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Auto-Tech 3D</title>
+    <title>IT & Auto Quest</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <div id="app"></div>
+    <div id="menu">
+        <button onclick="setCategory('it')">IT</button>
+        <button onclick="setCategory('iq')">IQ</button>
+        <button onclick="setCategory('gaming')">Gaming</button>
+        <button onclick="setCategory('auto')">Auto</button>
+    </div>
+
+    <div id="quiz-box">
+        <h2 id="question">Выберите категорию</h2>
+        <div id="answers"></div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    
+    <script src="js/data.js"></script>
     <script src="js/engine.js"></script>
     <script src="js/main.js"></script>
+
 </body>
 </html>
