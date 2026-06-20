@@ -1,17 +1,17 @@
 .card{
-  transition:0.3s;
-  transform:scale(1);
+  opacity:0;
+  animation:fade 0.6s forwards;
 }
 
-.card:hover{
-  transform:scale(1.05);
-  box-shadow:0 0 20px #00c853;
+@keyframes fade{
+  to{opacity:1;}
 }
 
-img{
-  transition:0.3s;
+body{
+  animation:bg 6s infinite alternate;
 }
 
-img:hover{
-  transform:scale(1.02);
+@keyframes bg{
+  from{filter:brightness(1);}
+  to{filter:brightness(1.2);}
 }
