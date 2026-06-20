@@ -1,102 +1,84 @@
-let quiz = [];
-let i = 0;
-let score = 0;
-let answered = false;
+let quiz=[];
+let i=0;
+let score=0;
+let answered=false;
 
-function startQuiz(n){
-  quiz = quizzes[n];
-  i = 0;
-  score = 0;
-  load();
+function startApp(){
+document.getElementById("titleScreen").style.display="none";
+document.getElementById("game").style.display="block";
 }
 
-/* 🔀 shuffle */
-function shuffle(arr){
-  return arr.sort(() => Math.random() - 0.5);
+function startQuiz(n){
+quiz = quizzes[n];
+i=0;
+score=0;
+load();
 }
 
 function load(){
 
-  answered = false;
+answered=false;
 
-  let q = quiz[i];
-  document.getElementById("q").textContent = q.q;
+let q = quiz[i];
+document.getElementById("q").textContent = q.q;
 
-  let ans = document.getElementById("answers");
-  ans.innerHTML = "";
+let ans = document.getElementById("answers");
+ans.innerHTML="";
 
-  ans.style.display = "grid";
-  ans.style.gridTemplateColumns = "1fr 1fr";
-  ans.style.gap = "10px";
+ans.style.display="grid";
+ans.style.gridTemplateColumns="1fr 1fr";
 
-  /* 🔥 создаём правильный ответ как текст */
-  let correctAnswer = q.a[q.c];
+q.a.forEach((text,index)=>{
 
-  /* 🔀 перемешиваем ВСЕ ответы */
-  let options = shuffle([...q.a]);
+let b=document.createElement("button");
+b.textContent=text;
 
-  options.forEach(text => {
+b.onclick=()=>{
 
-    let b = document.createElement("button");
-    b.textContent = text;
+if(answered) return;
+answered=true;
 
-    b.onclick = () => {
+let all=document.querySelectorAll("#answers button");
+all.forEach(x=>x.disabled=true);
 
-      if(answered) return;
-      answered = true;
+if(index===q.c){
+b.style.background="green";
+score++;
+}else{
+b.style.background="red";
 
-      let all = document.querySelectorAll("#answers button");
-      all.forEach(x => x.disabled = true);
+all[q.c].style.background="green";
+}
 
-      /* ✔ правильный */
-      if(text === correctAnswer){
-        b.style.background = "green";
-        b.innerHTML = "✔ " + text;
-        score++;
-      }
-      /* ❌ неправильный */
-      else{
-        b.style.background = "red";
-        b.innerHTML = "❌ " + text;
+update();
+};
 
-        /* показать правильный */
-        all.forEach(btn => {
-          if(btn.textContent === correctAnswer){
-            btn.style.background = "green";
-            btn.innerHTML = "✔ " + correctAnswer;
-          }
-        });
-      }
+ans.appendChild(b);
+});
 
-      update();
-    };
-
-    ans.appendChild(b);
-  });
-
-  progress();
-  update();
+progress();
+update();
 }
 
 function next(){
 
-  if(!answered) return;
+if(!answered) return;
 
-  if(i < quiz.length - 1){
-    i++;
-    load();
-  } else {
-    document.getElementById("q").textContent = "ТЕСТ ЗАВЕРШЁН 🎉";
-    document.getElementById("answers").innerHTML = "";
-  }
+if(i<quiz.length-1){
+i++;
+load();
+}else{
+document.getElementById("q").textContent="ТЕСТ ЗАВЕРШЁН";
+document.getElementById("answers").innerHTML="";
+}
 }
 
 function update(){
-  document.getElementById("score").textContent =
-    `Score: ${score} / ${quiz.length}`;
+document.getElementById("score").textContent =
+`Score: ${score} / ${quiz.length}`;
 }
 
 function progress(){
-  let p = (i / quiz.length) * 100;
-  document.getElementById("bar").style.width = p + "%";
+let p=(i/quiz.length)*100;
+document.getElementById("bar").style.width=p+"%";
 }
