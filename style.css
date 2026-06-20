@@ -1,48 +1,32 @@
-/* ===== ОСНОВА ===== */
 body{
   margin:0;
-  font-family:Arial, sans-serif;
-  background: radial-gradient(circle at top, #111, #000);
+  font-family:Arial;
+  background: radial-gradient(circle, #111, #000);
   color:white;
 }
 
-/* ===== HEADER ===== */
 header{
   text-align:center;
-  padding:30px;
-  background: linear-gradient(90deg, #000, #111, #000);
-  border-bottom:1px solid #00c853;
+  padding:25px;
+  background:#111;
+  border-bottom:1px solid #00ff88;
 }
 
-header h1{
-  margin:0;
-  font-size:32px;
-  letter-spacing:1px;
-}
-
-header p{
-  color:#aaa;
-}
-
-/* ===== ФИЛЬТРЫ ===== */
 .filters{
   display:flex;
   justify-content:center;
   gap:10px;
   padding:15px;
-  flex-wrap:wrap;
 }
 
 input, select{
   padding:10px;
-  border:none;
   border-radius:8px;
-  outline:none;
+  border:none;
   background:#1a1a1a;
   color:white;
 }
 
-/* ===== КАТАЛОГ ===== */
 .catalog{
   display:flex;
   flex-wrap:wrap;
@@ -51,26 +35,24 @@ input, select{
   padding:20px;
 }
 
-/* ===== КАРТОЧКА ===== */
+/* CARD */
 .card{
-  width:280px;
-  background:#141414;
+  width:270px;
+  background:#151515;
   border-radius:12px;
   overflow:hidden;
-  box-shadow:0 0 10px rgba(0,255,100,0.1);
   transition:0.3s;
 }
 
 .card:hover{
-  transform:scale(1.05);
-  box-shadow:0 0 20px #00c853;
+  transform:scale(1.07);
+  box-shadow:0 0 25px #00ff88;
 }
 
 .card img{
   width:100%;
   height:180px;
   object-fit:cover;
-  transition:0.3s;
 }
 
 .card h3{
@@ -83,22 +65,16 @@ input, select{
 }
 
 .card button{
+  width:90%;
   margin:10px;
   padding:10px;
-  width:90%;
   border:none;
   border-radius:8px;
-  background:#00c853;
-  color:white;
+  background:#00ff88;
   cursor:pointer;
-  transition:0.3s;
 }
 
-.card button:hover{
-  background:#00ff6a;
-}
-
-/* ===== СТРАНИЦА МАШИНЫ ===== */
+/* CAR PAGE */
 .car-page{
   padding:20px;
 }
@@ -108,15 +84,12 @@ input, select{
   max-height:500px;
   object-fit:cover;
   border-radius:12px;
-  box-shadow:0 0 20px rgba(0,255,100,0.2);
 }
 
-/* ===== ГАЛЕРЕЯ ===== */
 .gallery{
   display:flex;
   gap:10px;
   margin-top:10px;
-  flex-wrap:wrap;
 }
 
 .gallery img{
@@ -125,58 +98,21 @@ input, select{
   object-fit:cover;
   border-radius:8px;
   cursor:pointer;
-  transition:0.3s;
 }
 
-.gallery img:hover{
-  transform:scale(1.1);
-}
-
-/* ===== ИНФО ===== */
 .info{
   margin-top:20px;
   line-height:2;
-  font-size:16px;
-  color:#ddd;
 }
 
-/* ===== КНОПКИ ===== */
 .btn{
   margin-top:15px;
   padding:12px;
+  width:200px;
   border:none;
   border-radius:8px;
   cursor:pointer;
-  width:200px;
-  margin-right:10px;
 }
 
-.btn:hover{
-  transform:scale(1.05);
-}
-
-.btn:nth-child(1){
-  background:#25D366;
-  color:white;
-}
-
-.btn:nth-child(2){
-  background:#0088cc;
-  color:white;
-}
-
-/* ===== МОБИЛЬНАЯ ВЕРСИЯ ===== */
-@media(max-width:768px){
-  .card{
-    width:90%;
-  }
-
-  .gallery img{
-    width:90px;
-    height:60px;
-  }
-
-  header h1{
-    font-size:24px;
-  }
-}
+.btn:nth-child(1){background:#25D366;color:white;}
+.btn:nth-child(2){background:#0088cc;color:white;}
