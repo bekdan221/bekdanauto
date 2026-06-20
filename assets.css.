@@ -1,2 +1,2 @@
-h2 { color: #00d4ff; text-transform: uppercase; letter-spacing: 2px; }
-.test-container { border: 1px solid #333; }
+h1 { color: #00d4ff; margin-bottom: 20px; }
+.menu { display: flex; flex-direction: column; }
