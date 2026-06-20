@@ -8,38 +8,33 @@
 
 <body>
 
-<header>
-  🧠 MEGA QUIZ CHALLENGE
-</header>
+<header>🧠 MEGA QUIZ</header>
 
-<div class="container">
+<div class="wrap">
 
-  <!-- PROGRESS BAR -->
   <div class="progress">
-    <div id="progress-bar"></div>
+    <div id="bar"></div>
   </div>
 
-  <!-- CATEGORY -->
-  <div class="category">
-    <button onclick="startQuiz(0)">IQ тест</button>
-    <button onclick="startQuiz(1)">IT тест</button>
-    <button onclick="startQuiz(2)">Машины</button>
-    <button onclick="startQuiz(3)">Игры</button>
-    <button onclick="startQuiz(4)">Бизнес</button>
-    <button onclick="startQuiz(5)">Общее 1</button>
-    <button onclick="startQuiz(6)">Общее 2</button>
+  <div class="menu">
+    <button onclick="startQuiz(0)">IQ</button>
+    <button onclick="startQuiz(1)">IT</button>
+    <button onclick="startQuiz(2)">Cars</button>
+    <button onclick="startQuiz(3)">Games</button>
+    <button onclick="startQuiz(4)">Business</button>
+    <button onclick="startQuiz(5)">Fun 1</button>
+    <button onclick="startQuiz(6)">Fun 2</button>
   </div>
 
-  <!-- QUIZ BOX -->
-  <div class="quiz-box">
+  <div class="box">
 
-    <h2 id="question">Выбери тест</h2>
+    <h1 id="q">Выбери тест</h1>
 
     <div id="answers"></div>
 
-    <button onclick="next()">Дальше</button>
+    <button class="next" onclick="next()">ДАЛЕЕ</button>
 
-    <p id="score"></p>
+    <div id="score"></div>
 
   </div>
 
