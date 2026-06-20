@@ -1,2 +1,0 @@
-h1 { color: #00d4ff; margin-bottom: 20px; }
-.menu { display: flex; flex-direction: column; }
