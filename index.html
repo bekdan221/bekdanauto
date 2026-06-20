@@ -2,13 +2,33 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>Mega Quiz</title>
+<title>Mega Quiz Master</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>🧠 MEGA QUIZ CHALLENGE</header>
+<!-- 🟢 ТИТУЛЬНАЯ -->
+<div id="titleScreen" class="title">
+
+  <div class="logo">🧠</div>
+
+  <h1>MEGA QUIZ MASTER</h1>
+  <h2>Interactive Learning System</h2>
+
+  <div class="author">
+    👤 Автор: <br>
+    <b>Фил Темирбеков Бекдан Темирбекович</b>
+  </div>
+
+  <button onclick="startApp()">Начать</button>
+
+</div>
+
+<!-- 🎮 ИГРА -->
+<div id="game" style="display:none;">
+
+<header>MEGA QUIZ CHALLENGE</header>
 
 <div class="wrap">
 
@@ -37,6 +57,8 @@
     <div id="score"></div>
 
   </div>
+
+</div>
 
 </div>
 
