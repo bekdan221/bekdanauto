@@ -1,1 +1,7 @@
-
+body { background: #0a0a0c; color: #e0e0e0; font-family: 'Segoe UI', sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+#app { background: #16161d; padding: 40px; border-radius: 20px; box-shadow: 0 0 30px rgba(0,0,0,0.8); width: 400px; text-align: center; }
+.hidden { display: none; }
+button { background: #252530; color: white; border: 1px solid #444; padding: 15px; margin: 10px; width: 100%; border-radius: 8px; cursor: pointer; transition: 0.3s; }
+button:hover { background: #3b3b4f; border-color: #00d4ff; }
+h1 { color: #00d4ff; }
+#stats { font-size: 0.8em; color: #888; }
