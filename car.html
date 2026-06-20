@@ -1,38 +1,42 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Car</title>
+<title>Car View</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
-  <h1>BekdanAuto</h1>
-</header>
+<header>🚗 CAR DETAILS</header>
 
-<div class="car">
+<div class="carView">
 
-  <img id="img" class="big">
+<img id="img" class="mainImg">
 
-  <h2 id="name"></h2>
-  <p id="price"></p>
-
-  <button onclick="history.back()">BACK</button>
+<div id="info" class="info"></div>
 
 </div>
 
 <script src="cars.js"></script>
-<script src="script.js"></script>
 
 <script>
 const id=new URLSearchParams(location.search).get("id");
 const car=cars.find(c=>c.id===id);
 
 document.getElementById("img").src=car.img;
-document.getElementById("name").innerText=car.name;
-document.getElementById("price").innerText=car.price;
+
+document.getElementById("info").innerHTML=`
+<h2>${car.name}</h2>
+<p>💰 Price: $${car.price}</p>
+<p>📊 Mileage: ${car.mileage} km</p>
+<p>📅 Year: ${car.year}</p>
+<p>⚙ Engine: ${car.engine}</p>
+<p>🔧 Transmission: ${car.transmission}</p>
+<p>📍 ${car.country}, ${car.city}</p>
+<p>🧾 Condition: ${car.condition}</p>
+`;
+
 </script>
 
 </body>
