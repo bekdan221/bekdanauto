@@ -1,6 +1,16 @@
-const neuralNodes = [
-    { id: 1, signal: "Инициализация нейросети..." },
-    { id: 2, signal: "Анализ входящих данных..." },
-    { id: 3, signal: "Распознавание паттернов..." },
-    { id: 4, signal: "Система готова к работе." }
-];
+function startAnalysis() {
+    const core = document.getElementById('brain-core');
+    core.style.borderColor = '#ff00ff';
+    core.style.boxShadow = '0 0 100px #ff00ff';
+    
+    let i = 0;
+    const interval = setInterval(() => {
+        if(i < neuralNodes.length) {
+            console.log(neuralNodes[i].signal);
+            alert(neuralNodes[i].signal); // Выведет сообщение на экран
+            i++;
+        } else {
+            clearInterval(interval);
+        }
+    }, 1500);
+}
