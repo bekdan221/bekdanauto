@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>CyberQuest Portal</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>BekdanAuto</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="app">
-        <div id="welcome-screen">
-            <h1>CyberQuest</h1>
-            <p>Темирбеков Бекдан Темирбекович</p>
-            <div id="categories">
-                <button onclick="initQuiz('IT')">IT-Сфера</button>
-                <button onclick="initQuiz('IQ')">IQ-Тест</button>
-                <button onclick="initQuiz('Авто')">Авто-Мир</button>
-                <button onclick="initQuiz('Игры')">Гейминг</button>
-                <button onclick="initQuiz('Бизнес')">Бизнес</button>
-            </div>
-        </div>
-        <div id="quiz-screen" class="hidden">
-            <div id="stats">Вопрос <span id="q-num">1</span>/20</div>
-            <h2 id="q-text"></h2>
-            <div id="answers"></div>
-        </div>
-    </div>
-    <script src="main.js"></script>
+
+<header>
+  <h1>🚗 BekdanAuto</h1>
+  <p>Премиальные автомобили</p>
+</header>
+
+<div class="filters">
+  <input id="search" placeholder="Поиск (BMW, Toyota...)">
+
+  <select id="brand">
+    <option value="all">Все марки</option>
+    <option value="BMW">BMW</option>
+    <option value="Toyota">Toyota</option>
+    <option value="Lexus">Lexus</option>
+  </select>
+</div>
+
+<div id="catalog" class="catalog"></div>
+
+<script src="script.js"></script>
 </body>
 </html>
