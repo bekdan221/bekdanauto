@@ -1,32 +1,18 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<title>Favorites</title>
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <title>Favorites</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+  <h1>Избранное</h1>
+  <div id="favList"></div>
 
-<h1 class="pageTitle">❤️ Favorites</h1>
-<div id="fav" class="grid"></div>
-
-<script src="js/favorites.js"></script>
-<script src="js/movies.js"></script>
-
-<script>
-const fav = getFav();
-
-document.getElementById("fav").innerHTML =
-fav.length ? fav.map(card).join("") : "<h2>No favorites</h2>";
-
-function card(m){
-return `
-<div class="card">
-<img src="${m.img}">
-<p>${m.title}</p>
-</div>`;
-}
-</script>
-
+  <script src="js/movies.js"></script>
+  <script src="js/favorites.js"></script>
+  <script>
+    renderFavorites();
+  </script>
 </body>
 </html>
