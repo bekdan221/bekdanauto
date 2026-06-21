@@ -1,1 +1,31 @@
+body {
+    margin: 0;
+    font-family: Arial;
+    background: #0f0f0f;
+    color: white;
+}
 
+header {
+    padding: 20px;
+    text-align: center;
+}
+
+input {
+    padding: 10px;
+    width: 60%;
+    border-radius: 10px;
+    border: none;
+}
+
+#movies {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    padding: 20px;
+}
+
+.movie {
+    background: #1c1c1c;
+    padding: 10px;
+    border-radius: 10px;
+}
