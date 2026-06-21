@@ -1,14 +1,7 @@
-# CineVerse 🎬
+CineVerse PRO MAX
 
-Mini кино-сайт
-
-## Возможности
-- Поиск фильмов
-- Каталог
-- Карточки
-- Будущие фичи: избранное, профиль
-
-## Технологии
-- HTML
-- CSS
-- JavaScript
+Netflix-style movie app:
+- search
+- categories
+- favorites
+- movie page
