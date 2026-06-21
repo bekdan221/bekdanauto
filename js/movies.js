@@ -1,14 +1,30 @@
-[
-  {
-    "id": 1,
-    "title": "Neon City",
-    "poster": "assets/banner.jpg",
-    "description": "Фантастический город будущего"
-  },
-  {
-    "id": 2,
-    "title": "Shadow War",
-    "poster": "assets/logo.png",
-    "description": "Боевик про тайные войны"
-  }
-]
+let movies = [];
+
+fetch("data/movies.json")
+  .then(res => res.json())
+  .then(data => {
+    movies = data;
+    renderMovies(movies);
+  });
+
+function renderMovies(list) {
+  const container = document.getElementById("moviesContainer");
+  container.innerHTML = "";
+
+  list.forEach(m => {
+    container.innerHTML += `
+      <div class="movie" onclick="openMovie(${m.id})">
+        <img src="${m.poster}">
+        <p>${m.title}</p>
+      </div>
+    `;
+  });
+}
+
+function getMovieById(id) {
+  return movies.find(m => m.id == id);
+}
+
+function openMovie(id) {
+  location.href = "movie.html?id=" + id;
+}
