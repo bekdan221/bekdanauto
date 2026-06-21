@@ -1,9 +1,9 @@
-body {
-  background: #111;
-  color: white;
-  font-family: Arial;
+.moviePage{
+display:flex;
+gap:20px;
+padding:40px;
 }
-
-.container {
-  padding: 20px;
+.moviePage img{
+width:250px;
+border-radius:10px;
 }
