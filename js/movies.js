@@ -1,19 +1,41 @@
-let movies = [];
+const movies = [
+{id:1,title:"John Wick",cat:"action",img:"https://picsum.photos/300/450?1"},
+{id:2,title:"Mad Max",cat:"action",img:"https://picsum.photos/300/450?2"},
+{id:3,title:"Avengers",cat:"action",img:"https://picsum.photos/300/450?3"},
+{id:4,title:"Spider-Man",cat:"action",img:"https://picsum.photos/300/450?4"},
+{id:5,title:"Batman",cat:"action",img:"https://picsum.photos/300/450?5"},
+{id:6,title:"Fast X",cat:"action",img:"https://picsum.photos/300/450?6"},
+{id:7,title:"Mission Impossible",cat:"action",img:"https://picsum.photos/300/450?7"},
 
-async function loadMovies() {
-  const res = await fetch("data/movies.json");
-  movies = await res.json();
-  renderMovies(movies);
-}
+{id:8,title:"Interstellar",cat:"sci-fi",img:"https://picsum.photos/300/450?8"},
+{id:9,title:"Inception",cat:"sci-fi",img:"https://picsum.photos/300/450?9"},
+{id:10,title:"Dune",cat:"sci-fi",img:"https://picsum.photos/300/450?10"},
+{id:11,title:"Matrix",cat:"sci-fi",img:"https://picsum.photos/300/450?11"},
+{id:12,title:"Avatar",cat:"sci-fi",img:"https://picsum.photos/300/450?12"},
+{id:13,title:"Blade Runner",cat:"sci-fi",img:"https://picsum.photos/300/450?13"},
+{id:14,title:"Gravity",cat:"sci-fi",img:"https://picsum.photos/300/450?14"},
 
-function renderMovies(list) {
-  const container = document.getElementById("movies");
+{id:15,title:"Joker",cat:"drama",img:"https://picsum.photos/300/450?15"},
+{id:16,title:"Titanic",cat:"drama",img:"https://picsum.photos/300/450?16"},
+{id:17,title:"Godfather",cat:"drama",img:"https://picsum.photos/300/450?17"},
+{id:18,title:"Fight Club",cat:"drama",img:"https://picsum.photos/300/450?18"},
+{id:19,title:"Forrest Gump",cat:"drama",img:"https://picsum.photos/300/450?19"},
+{id:20,title:"Green Mile",cat:"drama",img:"https://picsum.photos/300/450?20"},
+{id:21,title:"Shawshank",cat:"drama",img:"https://picsum.photos/300/450?21"},
 
-  container.innerHTML = list.map(m => `
-    <div class="movie">
-      <img src="${m.img}">
-      <h3>${m.title}</h3>
-      <p>⭐ ${m.rating}</p>
-    </div>
-  `).join("");
-}
+{id:22,title:"Deadpool",cat:"comedy",img:"https://picsum.photos/300/450?22"},
+{id:23,title:"Mask",cat:"comedy",img:"https://picsum.photos/300/450?23"},
+{id:24,title:"Superbad",cat:"comedy",img:"https://picsum.photos/300/450?24"},
+{id:25,title:"Hangover",cat:"comedy",img:"https://picsum.photos/300/450?25"},
+{id:26,title:"Yes Man",cat:"comedy",img:"https://picsum.photos/300/450?26"},
+{id:27,title:"Click",cat:"comedy",img:"https://picsum.photos/300/450?27"},
+{id:28,title:"Step Brothers",cat:"comedy",img:"https://picsum.photos/300/450?28"},
+
+{id:29,title:"IT",cat:"horror",img:"https://picsum.photos/300/450?29"},
+{id:30,title:"Nun",cat:"horror",img:"https://picsum.photos/300/450?30"},
+{id:31,title:"Conjuring",cat:"horror",img:"https://picsum.photos/300/450?31"},
+{id:32,title:"Saw",cat:"horror",img:"https://picsum.photos/300/450?32"},
+{id:33,title:"Insidious",cat:"horror",img:"https://picsum.photos/300/450?33"},
+{id:34,title:"Annabelle",cat:"horror",img:"https://picsum.photos/300/450?34"},
+{id:35,title:"Smile",cat:"horror",img:"https://picsum.photos/300/450?35"}
+];
