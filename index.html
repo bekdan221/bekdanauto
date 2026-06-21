@@ -5,42 +5,34 @@
 <title>Mega Quiz</title>
 <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<!-- 🟢 ТИТУЛЬНАЯ СТРАНИЦА -->
+<!-- ТИТУЛЬНАЯ -->
 <div id="titleScreen" class="title">
 
   <div class="title-content">
 
     <div class="left-side">
-
       <div class="logo">🧠</div>
 
-      <h1>МЕГА ТЕСТОВЫЙ ПРОЕКТ</h1>
-      <h2>MEGA QUIZ MASTER</h2>
-
-      <div class="author">
-        👤 Автор: <br>
-        <b>Темирбеков Бекдан Темирбекович</b>
-      </div>
+      <h1>MEGA QUIZ</h1>
+      <h2>Test Game</h2>
 
       <button onclick="startApp()">Начать</button>
-
     </div>
 
     <div class="right-side">
-      <img src="qr-code.jpg" alt="QR-код" class="qr">
+      <img src="qr-code.jpg" class="qr">
     </div>
 
   </div>
 
 </div>
 
-<!-- 🎮 ИГРА -->
+<!-- ИГРА -->
 <div id="game" style="display:none;">
 
-<header>MEGA QUIZ CHALLENGE</header>
+<header>QUIZ GAME</header>
 
 <div class="wrap">
 
@@ -49,17 +41,12 @@
   </div>
 
   <div class="menu">
-    <button onclick="startQuiz(0)">🧠 IQ TEST</button>
-    <button onclick="startQuiz(1)">💻 IT TEST</button>
-    <button onclick="startQuiz(2)">🚗 CARS</button>
-    <button onclick="startQuiz(3)">🎮 GAMES</button>
-    <button onclick="startQuiz(4)">💼 BUSINESS</button>
-    <button onclick="startQuiz(5)">🌍 COUNTRIES</button>
-    <button onclick="startQuiz(6)">🇰🇬 KYRGYZSTAN</button>
+    <button onclick="startQuiz(0)">IQ</button>
+    <button onclick="startQuiz(1)">IT</button>
+    <button onclick="startQuiz(2)">CARS</button>
   </div>
 
   <div class="box">
-
     <h1 id="q">Выбери тест</h1>
 
     <div id="answers"></div>
@@ -67,7 +54,6 @@
     <button class="next" onclick="next()">ДАЛЕЕ</button>
 
     <div id="score"></div>
-
   </div>
 
 </div>
